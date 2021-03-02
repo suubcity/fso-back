@@ -6,33 +6,7 @@ const User = require('../models/user');
 const getTokenFrom = (request) => {
 	const authorization = request.get('authorization');
 
-	//logging authorization
-	console.log(
-		'######',
-		'VARIABLE NAME:',
-		'authorization',
-		'TYPEOF:',
-		typeof authorization,
-		'VALUE:',
-		authorization,
-		'######'
-	);
-	//end of logging
-
 	if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
-		//logging authorization.substring(7)
-		console.log(
-			'######',
-			'VARIABLE NAME:',
-			'authorization.substring(7)',
-			'TYPEOF:',
-			typeof authorization.substring(7),
-			'VALUE:',
-			authorization.substring(7),
-			'######'
-		);
-		//end of logging
-
 		return authorization.substring(7);
 	}
 	return null;
