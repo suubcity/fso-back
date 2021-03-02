@@ -3,7 +3,57 @@ POST http://localhost:3001/api/users
 Content-Type: application/json
 
 {
-    "username": "root",
-    "name": "Superuser",
-    "password": "itsapass"
+    "username": "martyn",
+    "name": "Martyn Thomas",
+    "password": "pass"
+}
+
+
+### Post a new note
+POST http://localhost:3001/api/notes
+Content-Type: application/json
+
+{
+    "content": "ANOTHER user id of note creator is at the start sent along the request",
+    "important": true,
+    "userId": "6036eb14e5075113ed9c3ed2"
+}
+
+### Post a login with correct password
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+    "username": "martyn",
+    "password": "pass"
+}
+
+### Post a login with incorrect password
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+    "username": "martyn",
+    "password": "wrong"
+}
+
+### Post a note with correct token
+POST http://localhost:3001/api/notes
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1hcnR5biIsImlkIjoiNjAzOTU3ZTE2YWE5OGEzNGVlZmRiYzQ5IiwiaWF0IjoxNjE0NzExOTExfQ.Ox7MUtarCkW8bLon-6qY87GlNRdK-Oc7U7A9PBsoTjM
+
+{
+    "content": "Single Page Apps use tokens",
+    "important": true
+}
+
+
+### Post a note with INCORRECT token
+POST http://localhost:3001/api/notes
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1hcnR5biIsImlkIjoiNjAzOTU3ZTE2YWE5OGEzNGVlZmRiYzQ5IiwiaWF0IjoxNjE0NzExOTExfQ.Ox7MUtarCkW8bLon-6qY87GlNRdK-Osc7U7A9PBsoTjM
+
+{
+    "content": "Single Page Apps use tokens",
+    "important": true
 }
